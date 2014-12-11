@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'bundler/setup'
 require 'cache_hash'
 
 def test1
@@ -54,6 +55,39 @@ def test2
 
 end
 
+def test3
+  puts "Testing block"
+  c = CacheHash.new(ttl: 3, gc_interval: 1)
+  
+  x = 0
+  10.times do
+    r = c.fetch(:foo) {
+      puts "expired cache"
+      x
+    }
+    x = x + 1
+    puts r
+    sleep 2
+  end
+  
+end
+
+def test4
+  puts "Testing default"
+  c = CacheHash.new(ttl: 2, gc_interval: 1)
+  
+  x = 0
+  c[:foo] = "HAZ VALUE"
+  4.times do
+    r = c.fetch(:foo, "NO VALUE")
+    x = x + 1
+    puts r
+    sleep 1
+  end
+  
+end
 
 test2
 test1
+test3
+test4
