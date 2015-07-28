@@ -8,9 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = CacheHash::VERSION
   spec.authors       = ["Doug Everly"]
   spec.email         = ["Doug.Everly@twcable.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Basic implementation of ruby Hash with value expiration.}
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
